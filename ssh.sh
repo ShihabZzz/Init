@@ -16,16 +16,16 @@ txtrst=$(tput sgr0)
 #echo -e ""
 
 # Installing Curl package
-echo -e "\n================== Installing Curl & git package ==================\n"
-sudo apt-get install -y curl git
+#echo -e "\n================== Installing Curl & git package ==================\n"
+#sudo apt-get install -y curl git
 
 echo -e "\n================== Setting up ssh connection with GitHub ==================\n"
 read -p "Enter github email : " email
 echo "Using email $email"
-ssh-keygen -t rsa -b 4096 -C "$email"
-eval `ssh-agent -s`
-ssh-add ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub
+ssh-keygen -t ed25519 -C "$email"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
 
 #pub=`cat ~/.ssh/id_rsa.pub`
 #read -p "Enter github username: " githubuser
